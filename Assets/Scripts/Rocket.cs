@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.WSA;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -10,8 +7,19 @@ public class Rocket : MonoBehaviour
     [SerializeField] private float flySpeed = 10f;
     private Rigidbody _rigidbody;
     private AudioSource _audioSource;
+    
+    enum State
+    {
+        Playing,
+        Dead,
+        NextLevel
+    };
+    
+    State _state = State.Playing;
+    
     void Start()
     {
+        _state = State.Playing;
         _rigidbody = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
         _rigidbody.mass = 0.7f;
@@ -20,26 +28,49 @@ public class Rocket : MonoBehaviour
 
     void Update()
     {
-        LaunchRocket();
-        RotateRocket();
+        if (_state == State.Playing)
+        {
+            LaunchRocket();
+            RotateRocket();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (_state != State.Playing)
+        {
+            return;
+        }
+        
         switch (collision.gameObject.tag)
         {
-            case "Friendly" : 
-                print("this friendly");
+            case "Finish" :
+                print("finish");
+                _state = State.NextLevel;
+                Invoke(nameof(LoadNextLevel), 3f);
                 break;
             case "Battery" : 
-                print("PlusEnergy");
+                print("plus energy");
                 break;
-            default:
-                print("boom!");
+            case "Barrier":
+                print("dead");
+                _state = State.Dead;
+                Invoke(nameof(LoadFirstLevel), 3f);
                 break;
         }
     }
 
+
+    void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+    
     void LaunchRocket()
     {
         if (Input.GetKey(KeyCode.Space))
