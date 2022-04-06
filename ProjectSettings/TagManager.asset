@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Friendly
   - Battery
+  - Barrier
   layers:
   - Default
   - TransparentFX

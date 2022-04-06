@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem flyParticle;
+    [SerializeField] private ParticleSystem deathParticle;
+    [SerializeField] private ParticleSystem finishParticle;
     [SerializeField] private float rotSpeed = 300f;
     [SerializeField] private float flySpeed = 10f;
     private Rigidbody _rigidbody;
@@ -45,21 +48,16 @@ public class Rocket : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Finish" :
-                print("finish");
-                _state = State.NextLevel;
-                Invoke(nameof(LoadNextLevel), 3f);
+                Finish();
                 break;
             case "Battery" : 
                 print("plus energy");
                 break;
             case "Barrier":
-                print("dead");
-                _state = State.Dead;
-                Invoke(nameof(LoadFirstLevel), 3f);
+                TakeBarrier();
                 break;
         }
     }
-
 
     void LoadNextLevel()
     {
@@ -80,10 +78,12 @@ public class Rocket : MonoBehaviour
             {
                 _audioSource.volume = 0.15f;
                 _audioSource.Play();
+                flyParticle.Play();
             }
         }
         else
         {
+            flyParticle.Stop();
             _audioSource.Pause();
         }
     }
@@ -101,5 +101,21 @@ public class Rocket : MonoBehaviour
             transform.Rotate(new Vector3(0, 0 , -0.125f) * rotationSpeed);
         }
         _rigidbody.freezeRotation = false;
+    }
+    
+    void Finish()
+    {
+        print("finish");
+        _state = State.NextLevel;
+        finishParticle.Play();
+        Invoke(nameof(LoadNextLevel), 3f);
+    }
+
+    void TakeBarrier()
+    {
+        print("dead");
+        _state = State.Dead;
+        deathParticle.Play();
+        Invoke(nameof(LoadFirstLevel), 3f);
     }
 }
