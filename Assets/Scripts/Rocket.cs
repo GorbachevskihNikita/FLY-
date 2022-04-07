@@ -8,6 +8,9 @@ public class Rocket : MonoBehaviour
     [SerializeField] private ParticleSystem finishParticle;
     [SerializeField] private float rotSpeed = 300f;
     [SerializeField] private float flySpeed = 10f;
+    [SerializeField] private AudioClip flySound;
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip finishSound;
     private Rigidbody _rigidbody;
     private AudioSource _audioSource;
     
@@ -77,7 +80,7 @@ public class Rocket : MonoBehaviour
             if (!_audioSource.isPlaying)
             {
                 _audioSource.volume = 0.15f;
-                _audioSource.Play();
+                _audioSource.PlayOneShot(flySound);
                 flyParticle.Play();
             }
         }
@@ -105,16 +108,18 @@ public class Rocket : MonoBehaviour
     
     void Finish()
     {
-        print("finish");
         _state = State.NextLevel;
+        _audioSource.Stop();
+        _audioSource.PlayOneShot(finishSound);
         finishParticle.Play();
         Invoke(nameof(LoadNextLevel), 3f);
     }
 
     void TakeBarrier()
     {
-        print("dead");
         _state = State.Dead;
+        _audioSource.Stop();
+        _audioSource.PlayOneShot(deathSound);
         deathParticle.Play();
         Invoke(nameof(LoadFirstLevel), 3f);
     }

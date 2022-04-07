@@ -74,6 +74,9 @@ MonoBehaviour:
   finishParticle: {fileID: 4126491222377388715}
   rotSpeed: 400
   flySpeed: 12
+  flySound: {fileID: 8300000, guid: 96681bd5e34012b4cbeb64768a9badd8, type: 3}
+  deathSound: {fileID: 8300000, guid: 528c11e925d19884683a591a62aaac7e, type: 3}
+  finishSound: {fileID: 8300000, guid: 97c0827e651c5d946858bae69338bbe3, type: 3}
 --- !u!82 &1763256537856607350
 AudioSource:
   m_ObjectHideFlags: 0
@@ -84,7 +87,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: db38fda8080fb1d41b040897aec4af9c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.176
   m_Pitch: 1

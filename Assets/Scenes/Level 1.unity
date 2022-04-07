@@ -803,7 +803,7 @@ PrefabInstance:
     - target: {fileID: 1025238366517765102, guid: 35d911e06793a654d9720945634c2db3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a0a21a59919a6ab4894baaa2f13e6477, type: 2}
+      objectReference: {fileID: 2100000, guid: f4a526d3345748f48a135cf9d7c193de, type: 2}
     - target: {fileID: 5454071442447707997, guid: 35d911e06793a654d9720945634c2db3, type: 3}
       propertyPath: m_Name
       value: Block (37)
@@ -3396,7 +3396,7 @@ PrefabInstance:
     - target: {fileID: 378321017507034754, guid: a735e6c6dfb728146b9e7abebc886940, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a9483fcd74966448db4dcffca922e4, type: 2}
+      objectReference: {fileID: 2100000, guid: c2b26b6aa896f424696bef475c2199fc, type: 2}
     - target: {fileID: 435262655306807361, guid: a735e6c6dfb728146b9e7abebc886940, type: 3}
       propertyPath: m_Name
       value: Ground
