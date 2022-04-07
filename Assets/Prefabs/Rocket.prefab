@@ -72,8 +72,8 @@ MonoBehaviour:
   flyParticle: {fileID: 4464388392427433445}
   deathParticle: {fileID: 8289174579720211337}
   finishParticle: {fileID: 4126491222377388715}
-  rotSpeed: 400
-  flySpeed: 12
+  rotSpeed: 500
+  flySpeed: 10000
   flySound: {fileID: 8300000, guid: 96681bd5e34012b4cbeb64768a9badd8, type: 3}
   deathSound: {fileID: 8300000, guid: 528c11e925d19884683a591a62aaac7e, type: 3}
   finishSound: {fileID: 8300000, guid: 97c0827e651c5d946858bae69338bbe3, type: 3}

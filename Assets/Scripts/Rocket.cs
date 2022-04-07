@@ -6,8 +6,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] private ParticleSystem flyParticle;
     [SerializeField] private ParticleSystem deathParticle;
     [SerializeField] private ParticleSystem finishParticle;
-    [SerializeField] private float rotSpeed = 300f;
-    [SerializeField] private float flySpeed = 10f;
+    [SerializeField] private float rotSpeed = 500f;
+    [SerializeField] private float flySpeed = 10000f;
     [SerializeField] private AudioClip flySound;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip finishSound;
@@ -76,7 +76,7 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            _rigidbody.AddRelativeForce(new Vector3(0,0.125f, 0) * flySpeed);
+            _rigidbody.AddRelativeForce(new Vector3(0,0.125f, 0) * flySpeed * Time.deltaTime);
             if (!_audioSource.isPlaying)
             {
                 _audioSource.volume = 0.15f;
