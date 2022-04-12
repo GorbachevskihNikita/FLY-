@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6766396784322531574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 6766396784537877997}
   - {fileID: 6766396785672942170}
@@ -72,7 +72,7 @@ MonoBehaviour:
   flyParticle: {fileID: 4464388392427433445}
   deathParticle: {fileID: 8289174579720211337}
   finishParticle: {fileID: 4126491222377388715}
-  rotSpeed: 500
+  rotSpeed: 1000
   flySpeed: 10000
   flySound: {fileID: 8300000, guid: 96681bd5e34012b4cbeb64768a9badd8, type: 3}
   deathSound: {fileID: 8300000, guid: 528c11e925d19884683a591a62aaac7e, type: 3}
